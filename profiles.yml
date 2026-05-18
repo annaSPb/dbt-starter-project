@@ -1,5 +1,5 @@
 default:
-  target: dev
+  target: prod
   outputs:
     dev:
       type: snowflake
@@ -7,7 +7,7 @@ default:
       user: 'not needed'
       role: accountadmin
       database: pc_dbt_db
-      schema: dev
+      schema: prod_git
       warehouse: pc_dbt_wh
       threads: 8
     prod:
@@ -16,6 +16,6 @@ default:
       user: 'not needed'
       role: accountadmin
       database: pc_dbt_db
-      schema: prod
+      schema: prod_git
       warehouse: pc_dbt_wh
       threads: 8
