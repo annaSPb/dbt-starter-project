@@ -1,0 +1,21 @@
+tasty_bytes:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: 'not needed'
+      user: 'not needed'
+      role: accountadmin
+      database: pc_dbt_db
+      schema: dev
+      warehouse: pc_dbt_wh
+      threads: 8
+    prod:
+      type: snowflake
+      account: 'not needed'
+      user: 'not needed'
+      role: accountadmin
+      database: pc_dbt_db
+      schema: prod
+      warehouse: pc_dbt_wh
+      threads: 8
