@@ -1,4 +1,4 @@
-tasty_bytes:
+default:
   target: dev
   outputs:
     dev:
