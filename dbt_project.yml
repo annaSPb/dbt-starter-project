@@ -2,12 +2,12 @@
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: 'my_new_project'
+name: 'dbt_core_vscode'
 version: '1.0.0'
 
 # This setting configures which "profile" dbt uses for this project. For dbt Cloud,
 # you can leave this as "default"
-profile: 'default'
+profile: 'dbt_core'
 
 # These configurations specify where dbt should look for different types of files.
 # The `source-paths` config, for example, states that models in this project can be
@@ -21,7 +21,7 @@ macro-paths: ["macros"]
 target-path: "target"  # directory which will store compiled SQL files
 clean-targets:         # directories to be removed by `dbt clean`
     - "target"
-    - "dbt_modules"
+    - "dbt_packages"
 
 
 # Configuring models
@@ -31,7 +31,11 @@ clean-targets:         # directories to be removed by `dbt clean`
 # as tables. These settings can be overridden in the individual model files
 # using the `{{ config(...) }}` macro.
 models:
-  my_new_project:
+  dbt_core_vscode:
       # Applies to all files under models/example/
-      example:
-          materialized: table
+    staging:
+      +materialized: view
+      +snowflake_warehouse: pc_dbt_wh
+    marts:
+      +materialized: table
+      +snowflake_warehouse: pc_dbt_wh_large
