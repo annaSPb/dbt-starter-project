@@ -1,6 +1,7 @@
 with source as (
 
     select * from {{ source('tpch', 'lineitem') }}
+    -- select * from snowflake_sample_data.tpch_sf1.lineitem
 
 ),
 
@@ -11,6 +12,8 @@ renamed as (
         {{ dbt_utils.generate_surrogate_key(
             ['l_orderkey', 
             'l_linenumber']) }}
+        -- md5(cast(coalesce(cast(l_orderkey as TEXT), '_dbt_utils_surrogate_key_null_') 
+        --     || '-' || coalesce(cast(l_linenumber as TEXT), '_dbt_utils_surrogate_key_null_') as TEXT))
                 as order_item_key,
         l_orderkey as order_key,
         l_partkey as part_key,
